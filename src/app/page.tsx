@@ -1,4 +1,4 @@
-import { MotionAnchor, MotionArt } from "./components/motion";
+import { MotionAnchor, MotionArt, MotionReveal } from "./components/motion";
 import { ProjectGallery } from "./components/project-gallery";
 
 const profileLinks = [
@@ -195,7 +195,11 @@ export default function Home() {
         <MotionArt className="hero-art-wrap">
           <aside className="hero-art" aria-label="AI and software engineering profile illustration">
             <div className="art-header"><span>ADITYA / ENGINEER PROFILE</span><span>BLR · IN</span></div>
-            <div className="orbit-stage" aria-hidden="true">
+            <div
+              className="orbit-stage"
+              role="img"
+              aria-label="Abstract neural network sphere, photographed by Growtika for Unsplash"
+            >
               <div className="orbit orbit-one"><i /></div>
               <div className="orbit orbit-two"><i /></div>
               <div className="orbit orbit-three"><i /></div>
@@ -203,6 +207,14 @@ export default function Home() {
               <div className="orbit-label orbit-label-top"><i /> MACHINE LEARNING</div>
               <div className="orbit-label orbit-label-bottom"><i /> PRODUCT ENGINEERING</div>
             </div>
+            <a
+              className="art-credit"
+              href="https://unsplash.com/photos/an-abstract-image-of-a-sphere-with-dots-and-lines-nGoCBxiaRO0"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Image by Growtika · Unsplash <ArrowUpRight />
+            </a>
             <div className="art-footer"><span>From notebook</span><span className="art-footer-line" /><span>to real-world use</span></div>
           </aside>
         </MotionArt>
@@ -218,16 +230,16 @@ export default function Home() {
       </section>
 
       <section className="section-block page-wrap" id="work" aria-labelledby="work-title">
-        <div className="section-heading">
+        <MotionReveal className="section-heading">
           <div><p className="section-kicker">SELECTED WORK <span>01 — 05</span></p><h2 id="work-title">A little of what I&apos;ve been building.</h2></div>
           <p className="section-intro">Products, models, and experiments — shaped around real problems and real people.</p>
-        </div>
+        </MotionReveal>
         <ProjectGallery projects={projects} />
       </section>
 
       <section className="about-section" id="about" aria-labelledby="about-title">
         <div className="about-grid page-wrap">
-          <div className="about-heading"><p className="section-kicker">A BIT ABOUT ME <span>01</span></p><h2 id="about-title">Curious by nature.<br /><em>Practical by design.</em></h2></div>
+          <MotionReveal className="about-heading"><p className="section-kicker">A BIT ABOUT ME <span>01</span></p><h2 id="about-title">Curious by nature.<br /><em>Practical by design.</em></h2></MotionReveal>
           <div className="about-copy">
             <p className="about-lead">The best technical work makes someone&apos;s day a little easier.</p>
             <p>I&apos;m pursuing a B.E. in Computer Science and Engineering at PES College of Engineering, graduating in May 2027. I enjoy the full path from exploring data and training a model to designing an API and building the interface around it.</p>
@@ -243,10 +255,10 @@ export default function Home() {
       </section>
 
       <section className="skills-section section-block page-wrap" id="skills" aria-labelledby="skills-title">
-        <div className="section-heading">
+        <MotionReveal className="section-heading">
           <div><p className="section-kicker">TOOLS OF THE TRADE <span>02</span></p><h2 id="skills-title">A toolkit that moves across the stack.</h2></div>
           <p className="section-intro">I like connecting strong technical foundations with thoughtful product details.</p>
-        </div>
+        </MotionReveal>
         <div className="skills-grid">
           {skillGroups.map((group, index) => (
             <div className="skill-group" key={group.title}>
@@ -258,7 +270,7 @@ export default function Home() {
       </section>
 
       <section className="recognition-section page-wrap" aria-labelledby="recognition-title">
-        <div className="recognition-heading"><p className="section-kicker">BEYOND THE BUILD <span>03</span></p><h2 id="recognition-title">Things I&apos;m proud of.</h2></div>
+        <MotionReveal className="recognition-heading"><p className="section-kicker">BEYOND THE BUILD <span>03</span></p><h2 id="recognition-title">Things I&apos;m proud of.</h2></MotionReveal>
         <div className="recognition-list">
           <div><span className="recognition-symbol">✳</span><p><b>3rd place</b> at Technovate for India Conclave, a national AI-for-social-impact ideathon.</p></div>
           <div><span className="recognition-symbol">↗</span><p><b>Top 10 of 200+ teams</b> at Innovate-a-thon and Fin-A-thon.</p></div>

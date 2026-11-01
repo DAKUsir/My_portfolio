@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { MotionProvider } from "./components/motion";
+import { MotionProvider, ScrollProgress } from "./components/motion";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,7 +32,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <ScrollProgress />
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );

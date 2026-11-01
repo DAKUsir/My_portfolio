@@ -31,7 +31,11 @@ export function ProjectVisual({ kind }: { kind: string }) {
 
   if (kind === "krishi") {
     return (
-      <div className="project-art art-krishi" aria-hidden="true">
+      <div
+        className="project-art art-krishi"
+        role="img"
+        aria-label="Krishi Bazar concept over an aerial rice-field photograph by Ivan Bandura on Unsplash"
+      >
         <div className="field-grid" />
         <svg className="field-lines" viewBox="0 0 460 240" fill="none">
           <path d="M-10 204C96 176 134 225 230 188S367 167 480 110" />
@@ -41,6 +45,7 @@ export function ProjectVisual({ kind }: { kind: string }) {
         <div className="field-sun"><span>KRISHI<br />BAZAR</span></div>
         <div className="field-card"><span className="field-card-label">FARM ASSIST</span><b>Grow with better insight</b><span>Crop health · Market access</span></div>
         <span className="field-pin pin-one" /><span className="field-pin pin-two" />
+        <span className="art-photo-credit">Photo by Ivan Bandura · Unsplash</span>
       </div>
     );
   }
@@ -98,4 +103,3 @@ export function ProjectVisual({ kind }: { kind: string }) {
     </div>
   );
 }
-

@@ -85,7 +85,8 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                 key={project.number}
                 layout
                 initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.12 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{
                   layout: { type: "spring", stiffness: 280, damping: 30 },
