@@ -1,51 +1,44 @@
+function WindowBar({ title }: { title: string }) {
+  return (
+    <div className="visual-window-bar">
+      <span className="visual-window-dots"><i /><i /><i /></span>
+      <span>{title}</span>
+      <span className="visual-window-mark">↗</span>
+    </div>
+  );
+}
+
 export function ProjectVisual({ kind }: { kind: string }) {
   if (kind === "finishit") {
     return (
       <div className="project-art art-finishit" aria-hidden="true">
-        <div className="art-window-bar">
-          <span className="window-dots"><i /><i /><i /></span>
-          <span>today / learning plan</span>
-          <span className="window-plus">+</span>
+        <div className="visual-app-window">
+          <WindowBar title="finishit / my week" />
+          <div className="focus-panel">
+            <div><span>YOUR NEXT FOCUS</span><b>Build a small model</b><small>25 min · Machine learning</small></div>
+            <span className="focus-play">▶</span>
+          </div>
+          <div className="focus-progress"><i /></div>
+          <div className="focus-note"><span>✳</span> A plan that adapts as you learn</div>
         </div>
-        <div className="kanban-board">
-          <div className="kanban-column">
-            <span className="kanban-label">FOCUS</span>
-            <span className="task-card task-violet">Review neural nets</span>
-            <span className="task-card task-blue">Contest prep</span>
-          </div>
-          <div className="kanban-column">
-            <span className="kanban-label">IN FLOW</span>
-            <span className="task-card task-green">Build a small model</span>
-            <span className="task-card task-muted" />
-          </div>
-          <div className="kanban-column">
-            <span className="kanban-label">DONE</span>
-            <span className="task-card task-done">Weekly review</span>
-            <span className="task-card task-done">Read 2 papers</span>
-          </div>
-        </div>
-        <div className="art-footnote"><span /> six AI tools, one learning loop</div>
+        <span className="visual-number">01 / LEARNING LOOP</span>
       </div>
     );
   }
 
   if (kind === "krishi") {
     return (
-      <div
-        className="project-art art-krishi"
-        role="img"
-        aria-label="Krishi Bazar concept over an aerial rice-field photograph by Ivan Bandura on Unsplash"
-      >
-        <div className="field-grid" />
-        <svg className="field-lines" viewBox="0 0 460 240" fill="none">
+      <div className="project-art art-krishi" role="img" aria-label="Krishi Bazar farming assistant interface over an agricultural landscape">
+        <div className="market-topography" />
+        <svg className="market-route" viewBox="0 0 460 240" fill="none" aria-hidden="true">
           <path d="M-10 204C96 176 134 225 230 188S367 167 480 110" />
           <path d="M-18 228C91 199 134 245 238 210S382 187 488 132" />
           <path d="M-12 179C88 151 139 201 226 165S357 145 473 85" />
         </svg>
-        <div className="field-sun"><span>KRISHI<br />BAZAR</span></div>
-        <div className="field-card"><span className="field-card-label">FARM ASSIST</span><b>Grow with better insight</b><span>Crop health · Market access</span></div>
-        <span className="field-pin pin-one" /><span className="field-pin pin-two" />
-        <span className="art-photo-credit">Photo by Ivan Bandura · Unsplash</span>
+        <div className="market-sun"><span>KRISHI<br />BAZAR</span></div>
+        <div className="market-card"><span>FARM ASSIST</span><b>Grow with better insight</b><small>Crop health · Market access</small></div>
+        <span className="market-pin market-pin-one" /><span className="market-pin market-pin-two" />
+        <span className="visual-number">02 / FIELD TO MARKET</span>
       </div>
     );
   }
@@ -54,13 +47,14 @@ export function ProjectVisual({ kind }: { kind: string }) {
     return (
       <div className="project-art art-cancer" aria-hidden="true">
         <div className="scan-grid" />
+        <div className="scan-rings"><i /><i /><i /><span /></div>
         <div className="scan-panel">
           <span className="scan-label">MODEL EXPLAINABILITY</span>
-          <div className="scan-score"><b>01</b><span>individual<br />prediction</span></div>
-          <div className="scan-bars"><i /><i /><i /><i /><i /><i /></div>
-          <div className="scan-legend"><span><i />SHAP values</span><span>feature impact</span></div>
+          <div className="scan-score"><b>09</b><span>classifiers<br />benchmarked</span></div>
+          <div className="scan-bars"><i /><i /><i /><i /><i /></div>
+          <div className="scan-legend"><span><i />SHAP + LIME</span><span>FEATURE IMPACT</span></div>
         </div>
-        <div className="scan-stamp">SHAP<br />+ LIME</div>
+        <span className="visual-number">03 / INTERPRETABLE AI</span>
       </div>
     );
   }
@@ -78,7 +72,8 @@ export function ProjectVisual({ kind }: { kind: string }) {
           <circle cx="150" cy="115" r="7" className="retina-center" />
         </svg>
         <span className="retina-tag">CNN <b>×</b> ViT</span>
-        <span className="retina-caption">local detail / global context</span>
+        <span className="retina-caption">LOCAL DETAIL / GLOBAL CONTEXT</span>
+        <span className="visual-number">04 / VISION STUDY</span>
       </div>
     );
   }
@@ -86,11 +81,7 @@ export function ProjectVisual({ kind }: { kind: string }) {
   return (
     <div className="project-art art-gpt" aria-hidden="true">
       <div className="code-window">
-        <div className="art-window-bar">
-          <span className="window-dots"><i /><i /><i /></span>
-          <span>fine_tune.py</span>
-          <span className="window-plus">↗</span>
-        </div>
+        <WindowBar title="fine_tune.py" />
         <div className="code-lines">
           <span><i>01</i><b>model</b> = GPT2ForSequenceClassification()</span>
           <span><i>02</i><b>trainer</b> = Trainer(</span>
@@ -100,6 +91,7 @@ export function ProjectVisual({ kind }: { kind: string }) {
         </div>
         <div className="code-result"><span>VALIDATION F1</span><b>0.85+</b><i /></div>
       </div>
+      <span className="visual-number">05 / LANGUAGE SYSTEMS</span>
     </div>
   );
 }

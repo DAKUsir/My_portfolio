@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { MotionProvider, ScrollProgress } from "./components/motion";
+import { NeuralNetworkBackground } from "./components/neural-network-background";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f5f7f4",
+  themeColor: "#f3f1eb",
   colorScheme: "light",
 };
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
+        <NeuralNetworkBackground />
         <MotionProvider>
           <ScrollProgress />
           {children}

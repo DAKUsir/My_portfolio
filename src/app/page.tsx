@@ -95,42 +95,18 @@ const projects = [
 ];
 
 const skillGroups = [
-  {
-    title: "Languages",
-    items: ["Python", "C++", "JavaScript", "SQL"],
-  },
+  { title: "Languages", items: ["Python", "C++", "JavaScript", "SQL"] },
   {
     title: "AI / machine learning",
-    items: [
-      "PyTorch",
-      "TensorFlow",
-      "scikit-learn",
-      "Transformers",
-      "OpenCV",
-      "SHAP / LIME",
-    ],
+    items: ["PyTorch", "TensorFlow", "scikit-learn", "Transformers", "OpenCV", "SHAP / LIME"],
   },
   {
     title: "Product engineering",
-    items: [
-      "React",
-      "Next.js",
-      "Node.js",
-      "FastAPI",
-      "MongoDB",
-      "Tailwind CSS",
-    ],
+    items: ["React", "Next.js", "Node.js", "FastAPI", "MongoDB", "Tailwind CSS"],
   },
   {
     title: "Tools & delivery",
-    items: [
-      "Git / GitHub",
-      "Gradio",
-      "Hugging Face Hub",
-      "Jupyter",
-      "Vercel",
-      "Render",
-    ],
+    items: ["Git / GitHub", "Gradio", "Hugging Face Hub", "Jupyter", "Vercel", "Render"],
   },
 ];
 
@@ -156,31 +132,42 @@ export default function Home() {
       <header className="site-header page-wrap">
         <a className="brand" href="#top" aria-label="Aditya Chauhan, home">
           <span className="brand-mark">AC</span>
-          <span className="brand-name">Aditya Chauhan<span>AI / ML · SOFTWARE</span></span>
+          <span className="brand-name">
+            Aditya Chauhan
+            <span>AI / ML · SOFTWARE</span>
+          </span>
         </a>
         <nav className="main-nav" aria-label="Main navigation">
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a className="nav-contact" href="#contact">Let&apos;s talk <ArrowUpRight /></a>
+          <a href="#work">Selected work</a>
+          <a href="#about">Profile</a>
+          <a href="#skills">Toolkit</a>
+          <a className="nav-contact" href="#contact">
+            Let&apos;s talk <ArrowUpRight />
+          </a>
         </nav>
       </header>
 
-      <section className="hero page-wrap" aria-labelledby="hero-title">
+      <section className="hero page-wrap" aria-labelledby="hero-title" data-scroll-scene="origin">
         <div className="hero-copy">
-          <p className="eyebrow"><span className="availability-dot" /> AI / ML ENGINEERING <span className="eyebrow-divider">·</span> FULL-STACK DEVELOPMENT</p>
-          <h1 id="hero-title">I turn machine learning into <em>useful products.</em></h1>
+          <p className="eyebrow">
+            <span className="availability-dot" />
+            AI / ML ENGINEERING <span className="eyebrow-divider">·</span> BENGALURU, INDIA
+          </p>
+          <h1 id="hero-title">
+            Intelligence,
+            <br />
+            built for <em>real life.</em>
+          </h1>
           <p className="hero-description">
-            I&apos;m Aditya, a computer science undergraduate building AI-enabled
-            applications and taking ideas from model experiments to polished,
-            working software.
+            I&apos;m Aditya, a computer science undergraduate turning machine learning
+            experiments into useful, carefully built software.
           </p>
           <div className="hero-actions">
             <MotionAnchor className="button button-primary" href="#work">
-              Explore my work <ArrowDown />
+              Explore selected work <ArrowDown />
             </MotionAnchor>
             <a className="button button-quiet" href="/Aditya_Chauhan_Resume.pdf" target="_blank" rel="noreferrer">
-              View resume <ArrowUpRight />
+              Resume <ArrowUpRight />
             </a>
           </div>
           <div className="social-row" aria-label="Professional profiles">
@@ -190,60 +177,63 @@ export default function Home() {
               </a>
             ))}
           </div>
+          <a className="scroll-cue" href="#work">
+            <span className="scroll-cue-line" />
+            SCROLL TO EXPLORE
+          </a>
         </div>
 
         <MotionArt className="hero-art-wrap">
-          <aside className="hero-art" aria-label="AI and software engineering profile illustration">
-            <div className="art-header"><span>ADITYA / ENGINEER PROFILE</span><span>BLR · IN</span></div>
-            <div
-              className="orbit-stage"
-              role="img"
-              aria-label="Abstract neural network sphere, photographed by Growtika for Unsplash"
-            >
+          <aside className="hero-art" aria-label="A visual study of machine learning and software engineering">
+            <div className="art-header"><span>FIELD STUDY / 001</span><span>AC · BLR</span></div>
+            <div className="orbit-stage">
               <div className="orbit orbit-one"><i /></div>
               <div className="orbit orbit-two"><i /></div>
               <div className="orbit orbit-three"><i /></div>
-              <div className="orbit-core"><span>AC</span><small>BUILDING<br />INTELLIGENT<br />SOFTWARE</small></div>
+              <div className="orbit-core"><span>AC</span><small>FROM SIGNAL<br />TO SOMETHING<br />USEFUL</small></div>
               <div className="orbit-label orbit-label-top"><i /> MACHINE LEARNING</div>
               <div className="orbit-label orbit-label-bottom"><i /> PRODUCT ENGINEERING</div>
+              <span className="frame-cross frame-cross-one" />
+              <span className="frame-cross frame-cross-two" />
+              <span className="frame-scroll-cue"><i /> SCROLL · FIELD RECONFIGURES</span>
             </div>
-            <a
-              className="art-credit"
-              href="https://unsplash.com/photos/an-abstract-image-of-a-sphere-with-dots-and-lines-nGoCBxiaRO0"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Image by Growtika · Unsplash <ArrowUpRight />
-            </a>
-            <div className="art-footer"><span>From notebook</span><span className="art-footer-line" /><span>to real-world use</span></div>
+            <span className="art-credit">Generative network · pointer + scroll reactive</span>
+            <div className="art-footer"><span>Research</span><span className="art-footer-line" /><span>build</span><span className="art-footer-line" /><span>ship</span></div>
           </aside>
         </MotionArt>
+        <span className="hero-index" aria-hidden="true">01 / 05</span>
       </section>
 
-      <section className="proof-strip page-wrap" aria-label="Highlights">
+      <section className="proof-strip page-wrap" aria-label="Selected highlights">
         <div><span className="proof-number">2027</span><span className="proof-label">CSE graduate<br />PES College of Engineering</span></div>
-        <div><span className="proof-number">3<sup>rd</sup></span><span className="proof-label">Technovate for India<br />AI for social impact</span></div>
-        <div><span className="proof-number">6</span><span className="proof-label">ML models deployed<br />on Hugging Face Hub</span></div>
+        <div><span className="proof-number">03</span><span className="proof-label">Technovate for India<br />AI for social impact</span></div>
+        <div><span className="proof-number">06</span><span className="proof-label">ML models deployed<br />on Hugging Face Hub</span></div>
         <a href="https://coursera.org/share/bd84fe212ded8e521142c021195e3486" target="_blank" rel="noreferrer">
           <span className="proof-number proof-link">↗</span><span className="proof-label">Deep Learning<br />Specialization</span>
         </a>
       </section>
 
-      <section className="section-block page-wrap" id="work" aria-labelledby="work-title">
+      <section className="section-block page-wrap work-section" id="work" aria-labelledby="work-title" data-scroll-scene="work">
         <MotionReveal className="section-heading">
-          <div><p className="section-kicker">SELECTED WORK <span>01 — 05</span></p><h2 id="work-title">A little of what I&apos;ve been building.</h2></div>
-          <p className="section-intro">Products, models, and experiments — shaped around real problems and real people.</p>
+          <div>
+            <p className="section-kicker">SELECTED WORK <span>01 — 05</span></p>
+            <h2 id="work-title">Ideas, tested in the real world.</h2>
+          </div>
+          <p className="section-intro">A small reel of products and experiments, from a first model to a working interface.</p>
         </MotionReveal>
         <ProjectGallery projects={projects} />
       </section>
 
-      <section className="about-section" id="about" aria-labelledby="about-title">
+      <section className="about-section" id="about" aria-labelledby="about-title" data-scroll-scene="about">
         <div className="about-grid page-wrap">
-          <MotionReveal className="about-heading"><p className="section-kicker">A BIT ABOUT ME <span>01</span></p><h2 id="about-title">Curious by nature.<br /><em>Practical by design.</em></h2></MotionReveal>
+          <MotionReveal className="about-heading">
+            <p className="section-kicker">THE PERSON BEHIND THE WORK <span>01</span></p>
+            <h2 id="about-title">Curious by nature.<br /><em>Grounded in impact.</em></h2>
+          </MotionReveal>
           <div className="about-copy">
-            <p className="about-lead">The best technical work makes someone&apos;s day a little easier.</p>
-            <p>I&apos;m pursuing a B.E. in Computer Science and Engineering at PES College of Engineering, graduating in May 2027. I enjoy the full path from exploring data and training a model to designing an API and building the interface around it.</p>
-            <p>I&apos;m currently looking for AI/ML or software engineering internship opportunities where I can keep learning, contribute to a team, and ship useful things.</p>
+            <p className="about-lead">Good engineering should make a hard thing feel a little simpler.</p>
+            <p>I&apos;m pursuing a B.E. in Computer Science and Engineering at PES College of Engineering, graduating in May 2027. I enjoy the complete path: exploring data, training a model, designing an API, and building the interface around it.</p>
+            <p>I&apos;m looking for AI/ML or software engineering internship opportunities where I can learn from a team and help ship useful products.</p>
             <a className="text-link" href="mailto:chauhan.aditya.tech@gmail.com">chauhan.aditya.tech@gmail.com <ArrowUpRight /></a>
           </div>
         </div>
@@ -254,10 +244,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="skills-section section-block page-wrap" id="skills" aria-labelledby="skills-title">
+      <section className="skills-section section-block page-wrap" id="skills" aria-labelledby="skills-title" data-scroll-scene="skills">
         <MotionReveal className="section-heading">
-          <div><p className="section-kicker">TOOLS OF THE TRADE <span>02</span></p><h2 id="skills-title">A toolkit that moves across the stack.</h2></div>
-          <p className="section-intro">I like connecting strong technical foundations with thoughtful product details.</p>
+          <div><p className="section-kicker">THE WORKBENCH <span>02</span></p><h2 id="skills-title">One toolkit. Several layers.</h2></div>
+          <p className="section-intro">I connect model work with the software needed to make it useful.</p>
         </MotionReveal>
         <div className="skills-grid">
           {skillGroups.map((group, index) => (
@@ -269,27 +259,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="recognition-section page-wrap" aria-labelledby="recognition-title">
-        <MotionReveal className="recognition-heading"><p className="section-kicker">BEYOND THE BUILD <span>03</span></p><h2 id="recognition-title">Things I&apos;m proud of.</h2></MotionReveal>
+      <section className="recognition-section page-wrap" id="recognition" aria-labelledby="recognition-title" data-scroll-scene="recognition">
+        <MotionReveal className="recognition-heading"><p className="section-kicker">MILESTONES <span>03</span></p><h2 id="recognition-title">The work has taken me places.</h2></MotionReveal>
         <div className="recognition-list">
-          <div><span className="recognition-symbol">✳</span><p><b>3rd place</b> at Technovate for India Conclave, a national AI-for-social-impact ideathon.</p></div>
-          <div><span className="recognition-symbol">↗</span><p><b>Top 10 of 200+ teams</b> at Innovate-a-thon and Fin-A-thon.</p></div>
-          <div><span className="recognition-symbol">⌁</span><p><b>1st place in college powerlifting</b> in the under-75 kg category, two years running.</p></div>
+          <div><span className="recognition-symbol">01</span><p><b>3rd place</b> at Technovate for India Conclave, a national AI-for-social-impact ideathon.</p></div>
+          <div><span className="recognition-symbol">02</span><p><b>Top 10 of 200+ teams</b> at Innovate-a-thon and Fin-A-thon.</p></div>
+          <div><span className="recognition-symbol">03</span><p><b>1st place in college powerlifting</b> in the under-75 kg category, two years running.</p></div>
         </div>
       </section>
 
-      <section className="contact-section page-wrap" id="contact" aria-labelledby="contact-title">
+      <section className="contact-section page-wrap" id="contact" aria-labelledby="contact-title" data-scroll-scene="contact">
         <div className="contact-card">
           <div className="contact-orbit contact-orbit-one" /><div className="contact-orbit contact-orbit-two" />
           <div className="contact-content">
-            <p className="section-kicker">HAVE A GOOD PROBLEM?</p>
-            <h2 id="contact-title">Let&apos;s build<br /><em>something useful.</em></h2>
+            <p className="section-kicker">A GOOD PROBLEM STARTS A CONVERSATION</p>
+            <h2 id="contact-title">Let&apos;s make<br /><em>something matter.</em></h2>
             <p>I&apos;m open to internships, collaborations, and conversations about applied AI and software engineering.</p>
             <MotionAnchor className="button button-light" href="mailto:chauhan.aditya.tech@gmail.com">
-              Get in touch <ArrowUpRight />
+              Start a conversation <ArrowUpRight />
             </MotionAnchor>
           </div>
-          <div className="contact-aside"><span>BASED IN</span><b>Bengaluru, India</b><span>FOCUS</span><b>AI / ML · Full stack</b><a href="/Aditya_Chauhan_Resume.pdf" target="_blank" rel="noreferrer">Download my resume <ArrowUpRight /></a></div>
+          <div className="contact-aside"><span>BASED IN</span><b>Bengaluru, India</b><span>FOCUS</span><b>AI / ML · Full stack</b><a href="/Aditya_Chauhan_Resume.pdf" target="_blank" rel="noreferrer">Download resume <ArrowUpRight /></a></div>
         </div>
       </section>
 
