@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PortfolioOps
 
-## Getting Started
+A personal portfolio built as an end-to-end software delivery project. The site will showcase projects and a resume while the repository demonstrates how the application is planned, built, secured, deployed, and operated.
 
-First, run the development server:
+## Current status
+
+**Phase 1 — project planning and setup.** The Next.js, TypeScript, and Tailwind CSS application scaffold is in place. The feature scope and target architecture are recorded in [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md) and [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
+The Git repository is initialized locally. A GitHub remote has not been configured yet.
+
+## Run locally
+
+Requirements: Node.js 24 and npm 11 or compatible versions.
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Useful commands:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## Planned product areas
 
-To learn more about Next.js, take a look at the following resources:
+- Home and about: professional introduction and featured work.
+- Projects: searchable project cards with technologies, source, and demo links.
+- Skills: grouped technical skills.
+- Resume: view and download a PDF, once supplied.
+- Contact: validated contact flow, implemented after the frontend foundation.
+- Engineering: real deployment, pipeline, uptime, and security signals when those integrations exist.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Delivery direction
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The initial app is a single Next.js service. GitHub Actions will later validate pull requests; Docker will package releases; Terraform will provision the target AWS environment; and CloudWatch, Sentry, uptime checks, and Lighthouse CI will provide operational signals. See the architecture note for boundaries and decisions.
 
-## Deploy on Vercel
+## Repository guide
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+src/app/       Next.js routes and shared styles
+public/        Static assets and, later, the resume PDF
+docs/          Project scope and architecture decisions
+```
