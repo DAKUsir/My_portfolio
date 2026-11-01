@@ -26,6 +26,13 @@ npm run lint
 npm run build
 ```
 
+If the browser stays on a loading screen, stop any existing dev server with `Ctrl+C` first. Next allows one dev server per project; if port 3000 is occupied it may print a different local URL. If the old server left a stale development cache, remove it and restart:
+
+```bash
+rm -rf .next/dev
+npm run dev
+```
+
 ## Planned product areas
 
 - Home and about: professional introduction and featured work.
