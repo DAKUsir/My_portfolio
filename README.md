@@ -4,7 +4,7 @@ A personal portfolio for Aditya Chauhan, AI/ML engineering and full-stack develo
 
 ## Current status
 
-The Phase 1 project foundation is complete. The first portfolio experience is now personalized from the supplied resume and built as a responsive Next.js page. Contact API, automated tests, CI/CD, containerization, cloud infrastructure, and monitoring remain future phases.
+The Phase 1 portfolio is personalized from the supplied resume and built as a responsive Next.js site. The visual system uses a warm light palette, with a contrasting dark contact panel and custom project illustrations. Motion for React provides reduced-motion-aware entrances, hover feedback, and animated project filtering by discipline. Contact API, automated tests, CI/CD, containerization, cloud infrastructure, and monitoring remain future phases.
 
 ## Stack
 
@@ -46,6 +46,13 @@ public/        Static assets, including the resume PDF and site icon
 docs/          Project scope and architecture decisions
 ```
 
-## Delivery direction
+## Next steps
 
-The initial app is a single Next.js service. Later phases will add pull-request CI, security checks, a production Docker image, Terraform-managed AWS infrastructure, staged deployment, and operational monitoring. See [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md) and [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the current scope and target design.
+1. Review the resume details and project links, then refine any copy or portfolio content.
+2. Add a validated, rate-limited contact route and automated checks.
+3. Add pull-request CI with lint, build, and dependency/security checks.
+4. Build and run the app in a production Docker image.
+5. Provision a small cloud environment with Terraform, then deploy through a staged workflow.
+6. Add uptime, application, and deployment monitoring.
+
+The app currently runs as a single Next.js service. See [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md) and [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the scope and target design.

@@ -26,25 +26,6 @@ export function MotionArt({
   );
 }
 
-export function MotionCard({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <motion.article
-      className={className}
-      transition={{ type: "spring", stiffness: 260, damping: 25 }}
-      whileHover={{ y: -6, borderColor: "rgba(194, 239, 121, 0.42)" }}
-      whileTap={{ scale: 0.994 }}
-    >
-      {children}
-    </motion.article>
-  );
-}
-
 export function MotionAnchor({
   children,
   className,

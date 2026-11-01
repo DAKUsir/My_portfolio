@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: dark;
-  --page: #0b0e13;
-  --surface: #11161f;
-  --surface-raised: #171d28;
-  --ink: #f2f3ee;
-  --muted: #9ca5b2;
-  --soft: #c4cbd2;
-  --line: rgba(232, 238, 244, 0.12);
-  --lime: #c2ef79;
-  --mint: #8ce0c5;
-  --violet: #c1b2ff;
-  --blue: #96d5ff;
+  color-scheme: light;
+  --page: #f5f7f4;
+  --surface: #ffffff;
+  --surface-raised: #edf2ed;
+  --ink: #17251f;
+  --muted: #59675f;
+  --soft: #34443b;
+  --line: rgba(25, 50, 39, 0.13);
+  --lime: #286a55;
+  --mint: #3f8f78;
+  --violet: #7766af;
+  --blue: #337b9d;
 }
 
 @theme inline {
@@ -37,7 +37,7 @@ body {
   min-height: 100%;
   margin: 0;
   background:
-    radial-gradient(ellipse at 73% 7%, rgba(87, 112, 143, 0.1), transparent 36rem),
+    radial-gradient(ellipse at 73% 7%, rgba(92, 145, 117, 0.09), transparent 36rem),
     var(--page);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -47,7 +47,7 @@ body {
 }
 
 ::selection {
-  background: rgba(194, 239, 121, 0.3);
+  background: rgba(40, 106, 85, 0.18);
   color: var(--ink);
 }
 
@@ -60,6 +60,11 @@ a:focus-visible {
   outline: 2px solid var(--lime);
   outline-offset: 4px;
   border-radius: 4px;
+}
+
+.project-filter:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
 }
 
 svg {
@@ -103,7 +108,7 @@ svg {
   width: 40px;
   height: 40px;
   place-items: center;
-  border: 1px solid rgba(194, 239, 121, 0.42);
+  border: 1px solid rgba(40, 106, 85, 0.3);
   border-radius: 12px;
   color: var(--lime);
   font-family: var(--font-mono);
@@ -151,7 +156,7 @@ svg {
   align-items: center;
   gap: 7px;
   padding: 0 14px;
-  border: 1px solid rgba(194, 239, 121, 0.35);
+  border: 1px solid rgba(40, 106, 85, 0.3);
   border-radius: 999px;
   color: var(--lime);
 }
@@ -216,7 +221,7 @@ svg {
   flex: 0 0 auto;
   border-radius: 50%;
   background: var(--lime);
-  box-shadow: 0 0 14px rgba(194, 239, 121, 0.65);
+  box-shadow: 0 0 14px rgba(40, 106, 85, 0.25);
 }
 
 .eyebrow-divider {
@@ -279,11 +284,11 @@ svg {
 
 .button-primary {
   background: var(--lime);
-  color: #171c12;
+  color: #ffffff;
 }
 
 .button-primary:hover {
-  background: #d3f69c;
+  background: #205943;
 }
 
 .button-quiet {
@@ -292,7 +297,7 @@ svg {
 }
 
 .button-quiet:hover {
-  border-color: rgba(194, 239, 121, 0.45);
+  border-color: rgba(40, 106, 85, 0.4);
   color: var(--lime);
 }
 
@@ -318,6 +323,10 @@ svg {
 }
 
 .hero-art {
+  --lime: #c2ef79;
+  --mint: #8ce0c5;
+  --violet: #c1b2ff;
+  --blue: #96d5ff;
   position: relative;
   display: flex;
   min-height: 438px;
@@ -623,12 +632,75 @@ svg {
   gap: 17px;
 }
 
+.project-filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: -7px 0 20px;
+}
+
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.project-filter {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.project-filter:hover {
+  border-color: rgba(40, 106, 85, 0.4);
+  color: var(--ink);
+}
+
+.project-filter.is-active {
+  border-color: var(--lime);
+  background: var(--lime);
+  color: #ffffff;
+}
+
+.project-filter > span {
+  min-width: 17px;
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  opacity: 0.75;
+  text-align: center;
+}
+
+.project-count {
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.project-count b {
+  color: var(--ink);
+  font-weight: 650;
+}
+
 .project-card {
   min-width: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 20px;
-  background: linear-gradient(155deg, rgba(22, 29, 39, 0.93), rgba(15, 19, 27, 0.96));
+  background: linear-gradient(155deg, #ffffff, #fafcf9);
+  box-shadow: 0 10px 30px rgba(25, 50, 39, 0.035);
   transform-origin: center;
 }
 
@@ -640,6 +712,10 @@ svg {
 }
 
 .project-art {
+  --lime: #c2ef79;
+  --mint: #8ce0c5;
+  --violet: #c1b2ff;
+  --blue: #96d5ff;
   position: relative;
   display: flex;
   min-height: 246px;
@@ -1139,13 +1215,13 @@ svg {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  color: #8d98a5;
+  color: #59675f;
   font-size: 7px;
   line-height: 1.5;
 }
 
 .project-meta span:last-child {
-  color: #65707b;
+  color: #738078;
 }
 
 .project-body h3 {
@@ -1173,7 +1249,7 @@ svg {
   align-items: center;
   gap: 8px;
   margin: 17px 0 0;
-  color: #d8e6cb;
+  color: #38624f;
   font-family: var(--font-mono);
   font-size: 8px;
   letter-spacing: 0.025em;
@@ -1195,9 +1271,9 @@ svg {
 
 .tag-list li {
   padding: 6px 8px;
-  border: 1px solid rgba(232, 238, 244, 0.09);
+  border: 1px solid rgba(25, 50, 39, 0.12);
   border-radius: 999px;
-  color: #a8b2bb;
+  color: #58665e;
   font-family: var(--font-mono);
   font-size: 7px;
   line-height: 1;
@@ -1209,7 +1285,7 @@ svg {
   gap: 16px;
   margin-top: auto;
   padding-top: 15px;
-  border-top: 1px solid rgba(232, 238, 244, 0.09);
+  border-top: 1px solid rgba(25, 50, 39, 0.11);
 }
 
 .project-links a {
@@ -1222,7 +1298,7 @@ svg {
 }
 
 .project-links a:hover {
-  color: #e2ffb5;
+  color: #205943;
 }
 
 .about-section {
@@ -1230,8 +1306,8 @@ svg {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background:
-    radial-gradient(ellipse at 6% 47%, rgba(91, 116, 126, 0.1), transparent 31rem),
-    rgba(18, 23, 31, 0.72);
+    radial-gradient(ellipse at 6% 47%, rgba(112, 157, 128, 0.11), transparent 31rem),
+    rgba(234, 239, 232, 0.72);
 }
 
 .about-grid {
@@ -1452,6 +1528,10 @@ svg {
 }
 
 .contact-card {
+  --lime: #c2ef79;
+  --mint: #8ce0c5;
+  --violet: #c1b2ff;
+  --blue: #96d5ff;
   position: relative;
   display: grid;
   min-height: 337px;
@@ -1745,6 +1825,29 @@ svg {
   .project-grid {
     grid-template-columns: 1fr;
     gap: 13px;
+  }
+
+  .project-filter-row {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: -3px;
+  }
+
+  .project-filters {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .project-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-filter {
+    flex: 0 0 auto;
   }
 
   .project-card-featured {
