@@ -99,19 +99,23 @@ jobs:
         run: echo "IMAGE_NAME=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
 
       - name: Build production image
+        id: build-image
         run: docker buildx build --pull --load --tag "$IMAGE_NAME:$GITHUB_SHA" .
 
       - name: Scan image for high and critical vulnerabilities
+        id: trivy
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ env.IMAGE_NAME }}:${{ github.sha }}
-          format: table
+          format: json
+          output: trivy-results.json
           exit-code: "1"
           ignore-unfixed: true
           vuln-type: os,library
           severity: HIGH,CRITICAL
 
       - name: Generate CycloneDX SBOM
+        if: always() && steps.build-image.outcome == 'success'
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ env.IMAGE_NAME }}:${{ github.sha }}
@@ -120,11 +124,14 @@ jobs:
           exit-code: "0"
 
       - name: Archive image SBOM
+        if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: sbom-${{ github.sha }}
-          path: sbom.cdx.json
-          if-no-files-found: error
+          name: container-security-reports-${{ github.sha }}
+          path: |
+            trivy-results.json
+            sbom.cdx.json
+          if-no-files-found: warn
           retention-days: 30
 
       - name: Log in to GitHub Container Registry

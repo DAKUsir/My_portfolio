@@ -55,7 +55,7 @@ docker compose down
 
 Compose reads `.env` from the project directory for the Resend settings. Keep that file local; `.env*` is excluded from both Git and the Docker build context. The API remains usable without Resend, but sending email requires a valid `RESEND_API_KEY`, sender, and recipient.
 
-The container job builds and scans the image on pull requests and pushes. It fails for fixable high or critical OS/library vulnerabilities, publishes a CycloneDX SBOM as a 30-day Actions artifact, and publishes commit-SHA and `latest` tags to `ghcr.io` only from the repository's default branch. Gitleaks scans repository history for accidentally committed credentials. Dependabot opens weekly update PRs for npm dependencies, the Docker base image, and GitHub Actions.
+The container job builds and scans the image on pull requests and pushes. It fails for fixable high or critical OS/library vulnerabilities and uploads the Trivy report and CycloneDX SBOM as a 30-day Actions artifact. The non-root distroless runtime image reduces the shipped operating-system package set. Successful default-branch runs publish commit-SHA and `latest` tags to `ghcr.io`. Gitleaks scans repository history for accidentally committed credentials. Dependabot opens weekly update PRs for npm dependencies, the Docker base image, and GitHub Actions.
 
 The Playwright command reuses the development server on port 3000 when available, or starts one there. The API's in-memory rate limit is best-effort per process; use a shared limiter before running multiple production instances.
 

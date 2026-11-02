@@ -15,8 +15,8 @@ services:
       CONTACT_TO_EMAIL: ${CONTACT_TO_EMAIL:-you@example.com}
     read_only: true
     tmpfs:
-      - /tmp:rw,noexec,nosuid,size=64m
-      - /app/.next/cache:rw,noexec,nosuid,size=128m,uid=1001,gid=1001,mode=0755
+      - /tmp:rw,noexec,nosuid,size=64m,uid=65532,gid=65532,mode=1777
+      - /app/.next/cache:rw,noexec,nosuid,size=128m,uid=65532,gid=65532,mode=0755
     cap_drop:
       - ALL
     security_opt:
