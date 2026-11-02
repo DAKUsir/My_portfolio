@@ -2,7 +2,7 @@
 
 ## Application shape
 
-Use one Next.js App Router application with TypeScript. Keep portfolio content as repository-managed data until there is a concrete need for a CMS or database. Add a Next.js route handler for the contact flow later, with validation and rate limiting. PostgreSQL is optional and intentionally deferred.
+Use one Next.js App Router application with TypeScript. Keep portfolio content as repository-managed data until there is a concrete need for a CMS or database. The contact flow uses a Next.js route handler with server-side validation, a honeypot, and a bounded in-memory rate limiter. Resend delivers messages when configured; contact messages are not stored in an application database. The in-memory limiter is best-effort for a single process and should be replaced with shared storage before running multiple instances. PostgreSQL is optional and intentionally deferred.
 
 ```mermaid
 flowchart LR
@@ -53,8 +53,8 @@ src/app/                 Routes, layouts, and global styles
 src/components/          Shared UI components (as pages are built)
 src/content/              Typed portfolio content
 public/                   Images and supplied resume PDF
-tests/                    Unit and browser tests (later phase)
-.github/workflows/        CI, security, and release workflows (later phase)
+tests/                    Vitest unit and Playwright browser coverage
+.github/workflows/        Pull-request CI; release workflows follow in later phases
 terraform/                Cloud infrastructure modules (later phase)
 monitoring/               Dashboard and alert definitions (later phase)
 docs/                     Architecture, decisions, and runbooks

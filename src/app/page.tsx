@@ -1,5 +1,7 @@
 import { MotionAnchor, MotionArt, MotionReveal } from "./components/motion";
 import { ProjectGallery } from "./components/project-gallery";
+import { ContactForm } from "./components/contact-form";
+import { ThemeToggle } from "./components/theme-toggle";
 
 const profileLinks = [
   { label: "LinkedIn", href: "https://linkedin.com/in/aditya-chauhan-async" },
@@ -128,7 +130,7 @@ function ArrowDown() {
 
 export default function Home() {
   return (
-    <main className="site-shell" id="top">
+    <main className="site-shell" id="main-content">
       <header className="site-header page-wrap">
         <a className="brand" href="#top" aria-label="Aditya Chauhan, home">
           <span className="brand-mark">AC</span>
@@ -145,6 +147,7 @@ export default function Home() {
             Let&apos;s talk <ArrowUpRight />
           </a>
         </nav>
+        <ThemeToggle />
       </header>
 
       <section className="hero page-wrap" aria-labelledby="hero-title" data-scroll-scene="origin">
@@ -275,9 +278,7 @@ export default function Home() {
             <p className="section-kicker">A GOOD PROBLEM STARTS A CONVERSATION</p>
             <h2 id="contact-title">Let&apos;s make<br /><em>something matter.</em></h2>
             <p>I&apos;m open to internships, collaborations, and conversations about applied AI and software engineering.</p>
-            <MotionAnchor className="button button-light" href="mailto:chauhan.aditya.tech@gmail.com">
-              Start a conversation <ArrowUpRight />
-            </MotionAnchor>
+            <ContactForm />
           </div>
           <div className="contact-aside"><span>BASED IN</span><b>Bengaluru, India</b><span>FOCUS</span><b>AI / ML · Full stack</b><a href="/Aditya_Chauhan_Resume.pdf" target="_blank" rel="noreferrer">Download resume <ArrowUpRight /></a></div>
         </div>
