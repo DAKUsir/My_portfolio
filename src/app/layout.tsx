@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import { MotionProvider, ScrollProgress } from "./components/motion";
 import { NeuralNetworkBackground } from "./components/neural-network-background";
 import "./globals.css";
@@ -40,7 +41,7 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
