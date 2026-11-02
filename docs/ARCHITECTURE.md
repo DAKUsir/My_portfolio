@@ -8,7 +8,7 @@ Use one Next.js App Router application with TypeScript. Keep portfolio content a
 flowchart LR
   Visitor[Visitor browser] --> Web[Next.js application]
   Web --> Pages[Portfolio pages]
-  Web --> Contact[Contact route handler, later]
+  Web --> Contact[Contact route handler]
   Pages --> Content[Versioned project and profile content]
   Contact -. optional later .-> Store[(PostgreSQL, only if needed)]
 ```
@@ -23,13 +23,12 @@ flowchart LR
   PR --> CI[CI quality and security checks]
   CI --> Main[Protected main branch]
   Main --> Image[Build and scan immutable image]
-  Image --> ECR[AWS ECR]
-  ECR --> Stage[ECS staging]
+  Image --> Registry[GHCR image and SBOM]
+  Registry --> Stage[ECS staging]
   Stage --> Smoke[Smoke and health checks]
   Smoke --> Approval[Protected production approval]
   Approval --> Prod[ECS production]
   Prod --> Observe[CloudWatch, Sentry, uptime, Lighthouse]
-  Terraform[Terraform] -. provisions .-> ECR
   Terraform -. provisions .-> Stage
   Terraform -. provisions .-> Prod
 ```
@@ -60,4 +59,4 @@ monitoring/               Dashboard and alert definitions (later phase)
 docs/                     Architecture, decisions, and runbooks
 ```
 
-This is a target structure, not a claim that later-phase components or infrastructure already exist.
+Phase 5 now includes the `Dockerfile`, `compose.yaml`, Dependabot updates, secret scanning, container vulnerability scans, an SBOM artifact, and GHCR publishing. Terraform, staging/production deployment, and monitoring remain future work.

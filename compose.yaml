@@ -1,0 +1,33 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio-devops-platform:local
+    init: true
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      CONTACT_FROM_EMAIL: ${CONTACT_FROM_EMAIL:-onboarding@resend.dev}
+      CONTACT_TO_EMAIL: ${CONTACT_TO_EMAIL:-you@example.com}
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+      - /app/.next/cache:rw,noexec,nosuid,size=128m,uid=1001,gid=1001,mode=0755
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:3000/api/health').then((response) => process.exit(response.ok ? 0 : 1)).catch(() => process.exit(1))
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
