@@ -58,4 +58,4 @@ monitoring/               Dashboard and alert definitions (later phase)
 docs/                     Architecture, decisions, and runbooks
 ```
 
-Phase 5 includes the `Dockerfile`, `compose.yaml`, Dependabot updates, secret scanning, container vulnerability scans, an SBOM artifact, and GHCR publishing. The Render Blueprint now defines the initial public service; it still needs to be created from the Render Dashboard. Production plan selection, a custom domain, Resend sender verification, shared rate limiting, and monitoring remain future work.
+Phase 5 includes the `Dockerfile`, `compose.yaml`, Dependabot updates, secret scanning, container vulnerability scans, an SBOM artifact, and GHCR publishing. Phase 6 deploys the Docker service to Render at `my-portfolio-rvgm.onrender.com`, with an HTTP health check and a production smoke-check command. External uptime notifications, a custom domain, Resend sender verification, shared rate limiting, and a paid always-on plan remain future work; see `docs/OPERATIONS.md`.

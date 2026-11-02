@@ -4,7 +4,7 @@ A personal portfolio for Aditya Chauhan, AI/ML engineering and full-stack develo
 
 ## Current status
 
-The Phase 2 frontend is personalized from the supplied resume and built as a responsive Next.js site. It includes project and skills sections, resume viewing and download, SEO/social metadata, keyboard skip navigation, a persisted optional dark theme, and a responsive contact form. Phase 3 adds server-side field validation, a honeypot, a bounded in-memory rate limiter, a health endpoint, and Vitest/Playwright coverage. Phase 4 adds pull-request and main-branch CI for linting, type checking, unit and browser tests, production builds, and dependency security checks. Phase 5 adds a hardened production Docker image, Compose runtime, repository secret scanning, container vulnerability scanning, a CycloneDX SBOM, and default-branch publishing to GitHub Container Registry. Email delivery uses Resend when configured; without credentials the API returns an explicit setup error and the form offers a mailto fallback. Messages are not stored in an application database.
+The Phase 2 frontend is personalized from the supplied resume and built as a responsive Next.js site. It includes project and skills sections, resume viewing and download, SEO/social metadata, keyboard skip navigation, a persisted optional dark theme, and a responsive contact form. Phase 3 adds server-side field validation, a honeypot, a bounded in-memory rate limiter, a health endpoint, and Vitest/Playwright coverage. Phase 4 adds pull-request and main-branch CI for linting, type checking, unit and browser tests, production builds, and dependency security checks. Phase 5 adds a hardened production Docker image, Compose runtime, repository secret scanning, container vulnerability scanning, a CycloneDX SBOM, and default-branch publishing to GitHub Container Registry. Phase 6 deploys the Docker service on Render at <https://my-portfolio-rvgm.onrender.com>; its generated health endpoint and homepage have returned HTTP 200. Email delivery uses Resend when configured; without credentials the API returns an explicit setup error and the form offers a mailto fallback. Messages are not stored in an application database.
 
 ## Stack
 
@@ -87,4 +87,4 @@ docs/          Project scope and architecture decisions
 3. Replace process-local rate limiting with shared storage before scaling beyond one app process.
 4. Add uptime, application, and deployment monitoring.
 
-The app currently runs as a single Next.js service. See [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md) and [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the scope and target design.
+The app currently runs as a single Next.js service. See [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), and [`docs/OPERATIONS.md`](docs/OPERATIONS.md) for scope, architecture, and the Render runbook.
