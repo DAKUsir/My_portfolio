@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: aditya-portfolio
+    runtime: docker
+    plan: free
+    region: singapore
+    healthCheckPath: /api/health
+    autoDeployTrigger: checksPass

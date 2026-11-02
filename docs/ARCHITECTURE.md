@@ -15,7 +15,7 @@ flowchart LR
 
 ## Delivery target
 
-The learning target is a containerized Next.js service on AWS ECS Fargate behind an Application Load Balancer, with HTTPS and DNS. Terraform will manage the cloud resources. GitHub Actions will build one immutable image, scan it, deploy it to staging, run smoke checks, and promote the same image to production after approval.
+The deployment target is a containerized Next.js web service on Render, configured with a Blueprint in `render.yaml`. Render builds the Dockerfile from the connected GitHub repository in Singapore, uses `/api/health` as its readiness check, and auto-deploys after connected checks pass. The generated `onrender.com` URL is sufficient until a custom domain is available. The Free plan is intended for initial preview and may sleep when idle; upgrade before expecting production uptime.
 
 ```mermaid
 flowchart LR
@@ -24,13 +24,12 @@ flowchart LR
   CI --> Main[Protected main branch]
   Main --> Image[Build and scan immutable image]
   Image --> Registry[GHCR image and SBOM]
-  Registry --> Stage[ECS staging]
+  Main --> Render[Render Blueprint Docker build]
+  Render --> Stage[Render public service]
   Stage --> Smoke[Smoke and health checks]
   Smoke --> Approval[Protected production approval]
-  Approval --> Prod[ECS production]
+  Approval --> Prod[Production service]
   Prod --> Observe[CloudWatch, Sentry, uptime, Lighthouse]
-  Terraform -. provisions .-> Stage
-  Terraform -. provisions .-> Prod
 ```
 
 ## Decisions and rationale
@@ -59,4 +58,4 @@ monitoring/               Dashboard and alert definitions (later phase)
 docs/                     Architecture, decisions, and runbooks
 ```
 
-Phase 5 now includes the `Dockerfile`, `compose.yaml`, Dependabot updates, secret scanning, container vulnerability scans, an SBOM artifact, and GHCR publishing. Terraform, staging/production deployment, and monitoring remain future work.
+Phase 5 includes the `Dockerfile`, `compose.yaml`, Dependabot updates, secret scanning, container vulnerability scans, an SBOM artifact, and GHCR publishing. The Render Blueprint now defines the initial public service; it still needs to be created from the Render Dashboard. Production plan selection, a custom domain, Resend sender verification, shared rate limiting, and monitoring remain future work.

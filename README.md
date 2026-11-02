@@ -57,6 +57,12 @@ Compose reads `.env` from the project directory for the Resend settings. Keep th
 
 The container job builds and scans the image on pull requests and pushes. It fails for fixable high or critical OS/library vulnerabilities and uploads the Trivy report and CycloneDX SBOM as a 30-day Actions artifact. The non-root distroless runtime image reduces the shipped operating-system package set. Successful default-branch runs publish commit-SHA and `latest` tags to `ghcr.io`. Gitleaks scans repository history for accidentally committed credentials. Dependabot opens weekly update PRs for npm dependencies, the Docker base image, and GitHub Actions.
 
+## Deploy on Render
+
+The root `render.yaml` defines a public Docker web service in Render's Singapore region. Create it from the Render Dashboard with **New → Blueprint**, connect this GitHub repository, and select the Blueprint file. Render builds from the repository's `Dockerfile` and only auto-deploys after connected CI checks pass. The service receives a generated `onrender.com` URL; a custom domain can be added later. The app runs without Resend credentials and reports that contact email is not configured until its sending domain is verified.
+
+The Blueprint starts on Render's Free plan to avoid paid compute by default. Free web services sleep after 15 minutes without traffic and may take about a minute to wake on the next request. They also have limited CPU/RAM and are intended for preview and hobby use, not production availability. Upgrade the service plan in Render when you need it to stay awake. See [Render's Free instance limits](https://render.com/docs/free).
+
 The Playwright command reuses the development server on port 3000 when available, or starts one there. The API's in-memory rate limit is best-effort per process; use a shared limiter before running multiple production instances.
 
 If the browser stays on a loading screen, stop the existing dev server with `Ctrl+C` first. Next allows one dev server per project; if port 3000 is occupied it may print a different local URL. If the old server left a stale development cache, remove it and restart:
@@ -77,7 +83,7 @@ docs/          Project scope and architecture decisions
 ## Next steps
 
 1. Verify a production sending domain and configure the Resend settings in the deployment environment (deferred until the domain is available).
-2. Provision a small cloud environment with Terraform and deploy the scanned GHCR image through staging.
+2. Create the Render Blueprint service and verify its generated URL and health check.
 3. Replace process-local rate limiting with shared storage before scaling beyond one app process.
 4. Add uptime, application, and deployment monitoring.
 
