@@ -4,7 +4,7 @@ A personal portfolio for Aditya Chauhan, AI/ML engineering and full-stack develo
 
 ## Current status
 
-The Phase 2 frontend is personalized from the supplied resume and built as a responsive Next.js site. It includes project and skills sections, resume viewing and download, SEO/social metadata, keyboard skip navigation, a persisted optional dark theme, and a responsive contact form. Phase 3 adds server-side field validation, a honeypot, a bounded in-memory rate limiter, a health endpoint, and Vitest/Playwright coverage. Phase 4 adds pull-request and main-branch CI for linting, type checking, unit and browser tests, production builds, and dependency security checks. Phase 5 adds a hardened production Docker image, Compose runtime, repository secret scanning, container vulnerability scanning, a CycloneDX SBOM, and default-branch publishing to GitHub Container Registry. Phase 6 deploys the Docker service on Render at <https://my-portfolio-rvgm.onrender.com>; its generated health endpoint and homepage have returned HTTP 200. Email delivery uses Resend when configured; without credentials the API returns an explicit setup error and the form offers a mailto fallback. Messages are not stored in an application database.
+The Phase 2 frontend is personalized from the supplied resume and built as a responsive Next.js site. It includes project and skills sections, resume viewing and download, SEO/social metadata, keyboard skip navigation, a persisted optional dark theme, and a responsive contact form. Phase 3 adds server-side field validation, a honeypot, a bounded in-memory rate limiter, a health endpoint, and Vitest/Playwright coverage. Phase 4 adds pull-request and main-branch CI for linting, type checking, unit and browser tests, production builds, and dependency security checks. Phase 5 adds a hardened production Docker image, Compose runtime, repository secret scanning, container vulnerability scanning, a CycloneDX SBOM, and default-branch publishing to GitHub Container Registry. Phase 6 deploys the Docker service on Render at <https://my-portfolio-rvgm.onrender.com>, with <https://chauhanaditya.me> configured as the custom domain. The homepage and health endpoint have returned HTTP 200. Email delivery uses Resend when configured; without credentials the API returns an explicit setup error and the form offers a mailto fallback. Messages are not stored in an application database.
 
 ## Stack
 
@@ -57,11 +57,13 @@ Compose reads `.env` from the project directory for the Resend settings. Keep th
 
 The container job builds and scans the image on pull requests and pushes. It fails for fixable high or critical OS/library vulnerabilities and uploads the Trivy report and CycloneDX SBOM as a 30-day Actions artifact. The non-root distroless runtime image reduces the shipped operating-system package set. Successful default-branch runs publish commit-SHA and `latest` tags to `ghcr.io`. Gitleaks scans repository history for accidentally committed credentials. Dependabot opens weekly update PRs for npm dependencies, the Docker base image, and GitHub Actions.
 
-## Deploy on Render
+## Current production deployment
 
-The root `render.yaml` defines a public Docker web service in Render's Singapore region. Create it from the Render Dashboard with **New → Blueprint**, connect this GitHub repository, and select the Blueprint file. Render builds from the repository's `Dockerfile` and only auto-deploys after connected CI checks pass. The service receives a generated `onrender.com` URL; a custom domain can be added later. The app runs without Resend credentials and reports that contact email is not configured until its sending domain is verified.
+The production web service is hosted on Render from the repository's `Dockerfile`. Render builds from GitHub and auto-deploys after connected CI checks pass. The service is currently on the Free plan in the Virginia (US East) region and is reachable at both <https://my-portfolio-rvgm.onrender.com> and <https://chauhanaditya.me>. Namecheap DNS points the root domain and `www` subdomain to Render; Render manages HTTPS certificates for the custom domain.
 
-The Blueprint starts on Render's Free plan to avoid paid compute by default. Free web services sleep after 15 minutes without traffic and may take about a minute to wake on the next request. They also have limited CPU/RAM and are intended for preview and hobby use, not production availability. Upgrade the service plan in Render when you need it to stay awake. See [Render's Free instance limits](https://render.com/docs/free).
+The root `render.yaml` is a reproducible Blueprint definition and currently specifies Singapore; the existing live service has been configured separately in Virginia. If recreating the service from the Blueprint, review the region before provisioning. Render Free web services sleep after 15 minutes without traffic and may take about a minute to wake on the next request. Upgrade the service plan if you need it to stay awake. See [Render's Free instance limits](https://render.com/docs/free).
+
+Vercel is being considered as an alternative host for the Next.js app, but no Vercel deployment or domain migration has been completed. Keep the Render deployment and DNS in place until a Vercel deployment, environment variables, contact API, custom domain, and HTTPS have all been verified.
 
 The Playwright command reuses the development server on port 3000 when available, or starts one there. The API's in-memory rate limit is best-effort per process; use a shared limiter before running multiple production instances.
 
@@ -80,11 +82,11 @@ public/        Static assets, including the resume PDF and site icon
 docs/          Project scope and architecture decisions
 ```
 
-## Next steps
+## Remaining work
 
-1. Verify a production sending domain and configure the Resend settings in the deployment environment (deferred until the domain is available).
-2. Create the Render Blueprint service and verify its generated URL and health check.
-3. Replace process-local rate limiting with shared storage before scaling beyond one app process.
-4. Add uptime, application, and deployment monitoring.
+1. Verify `chauhanaditya.me` as a sending domain in Resend, then configure the production sender, recipient, and `RESEND_API_KEY` in the chosen host's secret settings and test delivery.
+2. Finish Grafana Synthetic Monitoring alert routing so check failures notify you.
+3. Decide whether to keep Render (upgrade to avoid Free-plan sleep) or migrate to Vercel; validate the contact API and environment variables before changing DNS.
+4. Replace process-local contact rate limiting with shared storage before running multiple app instances.
 
 The app currently runs as a single Next.js service. See [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), and [`docs/OPERATIONS.md`](docs/OPERATIONS.md) for scope, architecture, and the Render runbook.
